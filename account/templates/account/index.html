@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body bgcolor = pink>
+<center>
+<h2 style = "text-align: center;color:rgb(0, 0, 0);">บัญชี รายรับ - รายจ่าย</h2>
+{% load static %}
+<img src="{% static "account/a.jpg" %}" alt="Account"/>
+<br><a href = "{% url 'account:income' %}">กรอกข้อมูลรายรับ-รายจ่าย</a>
+<br><a href = "{% url 'account:history' %}">ดูประวัติรายรับ-รายจ่าย</a>
+</center>
+</body>
+</html>

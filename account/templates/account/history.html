@@ -1,0 +1,38 @@
+<html>
+<center>
+<style>
+a {
+    color: red;
+}
+</style>
+<body bgcolor="#00BFFF" >
+<h2 style = "text-align: center;color:rgb(255, 255, 0);">ประวัติ รายรับ - รายจ่าย</h2>
+
+<table border=1 style="width:50%">
+        <tr>
+            <td>รายการ</td>
+            <td>รายรับ</td>
+            <td>รายจ่าย</td>
+	    <td>วัน/เดือน/ปี</td>
+        </tr>
+{% for data in payment_list %}	
+<tr>
+            <td>{{ data.data_text}}</td>
+            {% if data.data_money < 0 %}
+		<td></td><td>{{ data.data_money}} บาท</td>
+	    {% else %}
+                <td>{{ data.data_money}} บาท</td><td></td>
+	    {% endif %}
+
+            <td>{{ data.pub_date }}</td>
+        </tr>
+{% endfor %}
+<tr>
+            <td style="text-align: center;" colspan="3">ยอดเงินคงเหลือ {{ amt_total }} บาท</td>
+        </tr>
+</table>
+<br><a href = "{% url 'account:income' %}">กรอกข้อมูลรายรับ-รายจ่าย</a>
+<br><a href = "{% url 'account:index' %}">หน้าหลัก</a>
+</body>
+</center>
+</html>
