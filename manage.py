@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 #!/usr/bin/env python3.5
-=======
-#!/usr/bin/env python
->>>>>>> 3b3f517aec6e98ef1f398d1daede2741a6958cf0
 import os
 import sys
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Account.settings")
-=======
+
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myapp.settings")
->>>>>>> 3b3f517aec6e98ef1f398d1daede2741a6958cf0
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
