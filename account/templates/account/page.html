@@ -1,0 +1,11 @@
+<h1> Write your Question </h1>
+<form action = "{% url 'account:question' %}" method = "post">
+{% csrf_token %}
+Question : <input type = "text" name = "question"><br><br>
+Choice (Example: Blue, Sky, etc... ): <input type = "text" name = "questionchoice"><br><br>
+<input type = "submit" value = "Accept">
+</form>
+
+
+
+<br><a href = "{% url 'account:index' %}">Back</a>
