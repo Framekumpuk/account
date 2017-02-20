@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Data
+from .models import Account
 
 def index(request):
     return render(request,"account/index.html",'')
@@ -21,7 +21,7 @@ def operand(request):
         money = ""
         date = ""
     else:
-            information = Data(data_text=data, data_money=money, pub_date=date)
+            information = Data(account_text=data, account_money=money, pub_date=date)
             information.save()
     return render(request,"account/detail.html",'')
 
