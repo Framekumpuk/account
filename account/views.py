@@ -23,6 +23,7 @@ def operand(request):
     else:
             information = Data(account_text=data, account_money=money, pub_date=date)
             information.save()
+    # user hits the Back button.
     return render(request,"account/detail.html",'')
 
 def history(request):
@@ -30,4 +31,5 @@ def history(request):
     total = 0
     for money in payment_list:
         total = total + money.data_money
+    # Calculate balance of paylist.
     return render(request,"account/history.html",{'payment_list':payment_list, 'amt_total':total})
