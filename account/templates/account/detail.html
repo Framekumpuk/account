@@ -10,29 +10,21 @@ a {
 <h2 style = "text-align: center;color:rgb(255, 255, 0);">บัญชี รายรับ - รายจ่าย</h2>
 
 <p style = "font-size:130%;clear:both;">รายรับ</p>
-<form action="{% url 'account:income'%}" method="post">
+<form action="{% url 'account:operand'%}" method="post">
 {% csrf_token %}
 
+    ประเภท:
+    <input type="radio" name="paylist" value="income"> รายรับ
+    <input type="radio" name="paylist" value="expense"> รายจ่าย<br><br>
     รายการ:
     <input type="text" name="data">
     จำนวน:
-    <input type="number" name="income" step="any">
+    <input type="number" name="value" step="any" min="0">
     <input type="date" name="date">
     <input type="submit">
 
 </form>
 
-
-<p style = "font-size:130%;">รายจ่าย</p>
-<form action="{% url 'account:expense' %}" method="post">
-{% csrf_token %}
-
-    รายการ:
-    <input type="text" name="data">
-    จำนวน:
-    <input type="number" name="expense" step="any">
-    <input type="date" name="date">
-    <input type="submit">
 <br><br><a href = "{% url 'account:history' %}">ดูประวัติรายรับ-รายจ่าย</a>
 <br><a href = "{% url 'account:index' %}">กลับสู่หน้าหลัก</a>
 </form>

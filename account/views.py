@@ -6,12 +6,15 @@ from .models import Data
 def index(request):
     return render(request,"account/index.html",'')
     
-def income(request):
+def operand(request):
     error_message = 0 
     try:
+        paylist = request.POST['paylist']
         data = request.POST['data']
-        money = request.POST['income']
+        money = request.POST['value']
         date = request.POST['date']
+        if paylist != 'income':
+            money = int(money)*-1
     except:
         error_message = 1
         data = ""
@@ -19,22 +22,6 @@ def income(request):
         date = ""
     else:
             information = Data(data_text=data, data_money=money, pub_date=date)
-            information.save()
-    return render(request,"account/detail.html",'')
-
-def expense(request):
-    error_message = 0 
-    try:
-        data = request.POST['data']
-        money = int(request.POST['expense'])
-        date = request.POST['date']
-    except:
-        error_message = 1
-        data = ""
-        money = ""
-        date = ""
-    else:
-            information = Data(data_text=data, data_money=-money, pub_date=date)
             information.save()
     return render(request,"account/detail.html",'')
 
