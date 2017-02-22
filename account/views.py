@@ -21,15 +21,15 @@ def operand(request):
         money = ""
         date = ""
     else:
-            information = Data(account_text=data, account_money=money, pub_date=date)
+            information = Account(account_text=data, account_money=money, pub_date=date)
             information.save()
     # user hits the Back button.
     return render(request,"account/detail.html",'')
 
 def history(request):
-    payment_list = Data.objects.order_by('-pub_date')
+    payment_list = Account.objects.order_by('-pub_date')
     total = 0
     for money in payment_list:
-        total = total + money.data_money
+        total = total + money.account_money
     # Calculate balance of paylist.
     return render(request,"account/history.html",{'payment_list':payment_list, 'amt_total':total})

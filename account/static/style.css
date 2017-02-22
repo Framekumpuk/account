@@ -1,0 +1,19 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('font.ttf');
+}
+
+p.ex1 {
+    font-family: myFirstFont;
+}
+
+th {
+  color: red;
+  background-color: yellow;
+}
+td {
+  text-align: center;
+}
+a {
+    color: red;
+}
