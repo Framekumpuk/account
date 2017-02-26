@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Account
+import csv
 
 def index(request):
     return render(request,"account/index.html",'')
@@ -33,3 +34,15 @@ def history(request):
         total = total + money.account_money
     # Calculate balance of paylist.
     return render(request,"account/history.html",{'payment_list':payment_list, 'amt_total':total})
+
+def some_view(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['data', 'value', 'date'])
+    payment_list = Account.objects.order_by('-pub_date')
+    for money in payment_list:
+        writer.writerow([money.account_text, money.account_money, money.pub_date])
+
+    return response
